@@ -1,0 +1,3 @@
+package main
+import("flag";"log";"os";"os/signal";"syscall";"github.com/rcangames/rgdns/internal/dnsserver")
+func main(){config:=flag.String("config","configs/zones.json","zone config");listen:=flag.String("listen",":8053","UDP/TCP listen address");flag.Parse();srv,err:=dnsserver.New(*config);if err!=nil{log.Fatal(err)};udp,tcp:=srv.Listen(*listen,"udp"),srv.Listen(*listen,"tcp");go func(){if e:=udp.Activate();e!=nil{log.Print(e)}}();go func(){if e:=tcp.Activate();e!=nil{log.Print(e)}}();log.Printf("RGDNS test DNS listening on %s",*listen);stop:=make(chan os.Signal,1);signal.Notify(stop,syscall.SIGINT,syscall.SIGTERM);<-stop;_=udp.Shutdown();_=tcp.Shutdown()}

@@ -1,0 +1,35 @@
+{
+  "zones": [
+    {
+      "name": "rg.",
+      "ttl": 300,
+      "records": [
+        {
+          "name": "rcangames.rg.",
+          "type": "A",
+          "value": "192.0.2.10"
+        },
+        {
+          "name": "www.rcangames.rg.",
+          "type": "CNAME",
+          "value": "rcangames.rg."
+        },
+        {
+          "name": "rgde.rcangames.rg.",
+          "type": "A",
+          "value": "192.0.2.11"
+        },
+        {
+          "name": "rg.",
+          "type": "NS",
+          "value": "ns1.rg."
+        },
+        {
+          "name": "ns1.rg.",
+          "type": "A",
+          "value": "192.0.2.53"
+        }
+      ]
+    }
+  ]
+}
